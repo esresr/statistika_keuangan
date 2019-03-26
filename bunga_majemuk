@@ -1,0 +1,62 @@
+bunga<-function(num,At,k,t){
+  #num pilihan 1=bunga tunggal
+  #num pilihan 2=bunga majemuk
+  #At=nilai akumulasi
+  #k=modal
+  #t=waktu
+  switch(num,
+         satu={
+           bunga=((At/k)-1)/t
+         },
+         dua={
+           bunga=((At/k)^(1/t))-1
+         })
+  return(bunga)
+}
+
+bunga2<-function(num,At,k,t,m=TRUE){
+  #num pilihan 1=bunga tunggal
+  #num pilihan 2=bunga majemuk
+  #At=nilai akumulasi
+  #k=modal
+  #t=waktu
+  #m=banyak bunga diberikan dalam 1 tahun
+  switch(num,
+         satu={
+           bunga=((At/k)-1)/t
+           cat("Bunga tunggal:",bunga)
+         },
+         dua={
+           bunga=m*((At/k)^(1/(m*t))-1)
+           cat("Bunga majemuk biasa/nominal:",bunga)
+         },
+         tiga={
+           bunga=log(At/k)/t
+           cat("Bunga majemuk kontinu:",bunga)
+         })
+}
+
+
+presentvalue<-function(num,At,i,t,m=TRUE){
+  switch(num,
+         satu={pv=At/(1+i*t)
+         cat("Nilai pv bunga tunggal:",pv)
+         },
+         dua={pv=At/(1+(i/m))^(m*t)
+         cat("Nilai pv bunga majemuk biasa/nominal:",pv)  
+         },
+         tiga={pv=At*exp(-i*t)
+         cat("Nilai pv bunga majemuk:",pv)
+         })
+}
+
+presentvalue(1,100,0.6,3)
+presentvalue(2,100,0.6,3)
+presentvalue(2,100,0.6,3,m=2)
+presentvalue(3,100,0.6,3)
+
+#nomor 6
+bunga2(3,4000,500,30)
+presentvalue(3,10000,0.06931472,20)
+presentvalue(3,10000,0.06931472,40)
+presentvalue(3,10000,0.06931472,60)
