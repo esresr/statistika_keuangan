@@ -1,0 +1,51 @@
+# statistika_keuangan
+
+nilaiakumulasi<-function(k,i,t){
+  At=k*(1+i*t)
+  return(At)
+}
+
+nilaiakumulasi2<-function(num,k,i,t){
+ switch(num,
+        satu={
+          At=k*(1+i*t)
+        },
+        dua={
+          At=k*(1+i)^t
+        })
+  return(At)
+}
+#num=pilihan 1=bunga tunggal
+#num=pilihan 2=bunga majemuk
+#num=pilihan 3=bunga majemuk kontinu
+#k=modal
+#i=bunga(decimal)
+#t=waktu
+#m=banyak bunga diberikan dalam 1 tahun
+
+nilaiakumulasi3<-function(num,k,i,t,m=TRUE){
+  switch(num,
+         satu={
+           At=k*(1+i*t)
+         },
+         dua={
+           At=k*((1+i/m)^(m*t))
+         })
+  return(At)
+}
+
+nilaiakumulasi4<-function(num,k,i,t,m=TRUE){
+  switch(num,
+         satu={
+           At=k*(1+i*t)
+           cat("Nilai akumulasi bunga tunggal:",At)
+         },
+         dua={
+           At=k*((1+i/m)^(m*t))
+           cat("Nilai akumulasi bunga majemuk biasa/nominal:",At)
+         },
+         tiga={
+           At=k*exp(i*t)
+           cat("Nilai akumulasi bunga majemuk kontinu:",At)
+         })
+}
