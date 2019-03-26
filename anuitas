@@ -1,0 +1,73 @@
+anuitas<-function(num,k,i,n){
+  v=(1+i)^-1
+  switch(num,
+         satu={
+           an=k*(1-v^n)/i
+           sn=k*((1+i)^n-1)/i
+           cat("present value untuk anuitas akhir:",an,"\n")
+           cat("nilai akumulasi untuk anuitas akhir:",sn)
+         },
+         dua={
+           an=k*(1-v^n)/(i*v)
+           sn=k*((1+i)^n-1)/(i*v)
+           cat("present value untuk anuitas awal:",an,"\n")
+           cat("nilai akumulasi untuk anuitas awal:",sn)
+         })
+}
+
+anuitas(1,300,0.08,10)
+anuitas(2,300,0.08,10)
+
+anuitas2<-function(num,k,i,t,m=TRUE){
+  n=m*t
+  j=i/m
+  v=(1+j)^-1
+  switch(num,
+         satu={
+           an=k*(1-v^n)/j
+           sn=k*((1+j)^n-1)/j
+           cat("present value untuk anuitas akhir:",an,"\n")
+           cat("nilai akumulasi untuk anuitas akhir:",sn)
+         },
+         dua={
+           an=k*(1-v^n)/(j*v)
+           sn=k*((1+j)^n-1)/(j*v)
+           cat("present value untuk anuitas awal:",an,"\n")
+           cat("nilai akumulasi untuk anuitas awal:",sn)
+         })
+}
+
+anuitas2(1,300,0.08,5,12)
+anuitas2(2,300,0.08,5,12)
+
+#soal nomor 1 An akhir
+anuitas2(1,10,0.12,10)
+#soal nomor 2 Sn awal
+anuitas2(2,1,0.05,5,12)
+#soal nomor 3 An akhir, harga mobil-An akhir
+anuitas2(1,5,0.18,4,12)
+HM=200-170.2128
+HM
+#soal nomor 4 Sn awal
+cicilan<-function(num,tot,i,t,m=TRUE){
+  #tot:an/sn
+  n=m*t
+  j=i/m
+  v=(1+j)^-1
+  switch(num,
+         satu={
+           kan=tot*j/(1-v^n)
+           ksn=tot*j/((1+j)^n-1)
+           cat("cicilan untuk present value untuk anuitas akhir:",kan,"\n")
+           cat("cicilan untuk nilai akumulasi untuk anuitas akhir:",ksn)
+         },
+         dua={
+           kan=tot*(j*v)/(1-v^n)
+           ksn=tot*(j*v)/((1+j)^n-1)
+           cat("cicilan untuk present value untuk anuitas awal:",kan,"\n")
+           cat("cicilan untuk nilai akumulasi untuk anuitas awal:",ksn)
+         })
+}
+
+anuitas2(2,300000,0.08,25)
+cicilan(2,23686325,0.07,15)
